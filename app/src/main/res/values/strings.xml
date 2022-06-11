@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Wambugu Grocery</string>
+    <string name="get_product">get product</string>
+    <string-array name="products">
+        <item>tomatoes</item>
+        <item>spinach</item>
+        <item>carrot</item>
+        <item>garlic</item>
+        <item>sukuma wiki</item>
+    </string-array>
+</resources>
