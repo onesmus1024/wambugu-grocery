@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         getProducts();
-        products.add(new Product(1L,"tomatoes",true,"best of all","https://media.istockphoto.com/photos/tomatoes-picture-id171589415?b=1&k=20&m=171589415&s=170667a&w=0&h=S5cOzGurvsQF_3p6tMFeX5ExD8i50hfHmBdLMp5700A=",new BigDecimal("400")));
 
 
-        myProductRecyclerViewAdapter = new MyProductRecyclerViewAdapter(products,MainActivity.this);
-        recyclerView.setAdapter(myProductRecyclerViewAdapter);
+
+
+
 
 
 
@@ -67,8 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    void buildRecyclerView(){
+
+    }
     void getProducts(){
-        String url = "http://ec2-3-83-149-169.compute-1.amazonaws.com:9090/productapi/products";
+        String url = "http://ec2-54-166-100-167.compute-1.amazonaws.com:9090/productapi/products";
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(this);
 
@@ -102,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         }
+                        myProductRecyclerViewAdapter = new MyProductRecyclerViewAdapter(products,MainActivity.this);
+                        recyclerView.setAdapter(myProductRecyclerViewAdapter);
+
                     }
                 },
                 new Response.ErrorListener() {
