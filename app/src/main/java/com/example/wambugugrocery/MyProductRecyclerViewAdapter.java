@@ -39,7 +39,7 @@ public class MyProductRecyclerViewAdapter extends RecyclerView.Adapter<MyProduct
 
         Glide.with(context).load(products.get(position).getImageUrl()).into(holder.iv_product_image);
         holder.tv_product_name.setText(products.get(position).getName());
-        holder.tv_product_price.setText(String.valueOf(products.get(position).getPrice()));
+        holder.tv_product_price.setText(String.valueOf(products.get(position).getPrice())+" ksh");
         holder.tv_product_description.setText(products.get(position).getDescription());
 
     }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int MY_SOCKET_TIMEOUT_MS = 9000;
     List<Product> products = new ArrayList<>();
-    private Button get_product_btn;
+    FloatingActionButton fab;
     private RecyclerView recyclerView;
     private MyProductRecyclerViewAdapter myProductRecyclerViewAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        get_product_btn = findViewById(R.id.get_product);
+        fab = findViewById(R.id.fab);
         recyclerView = findViewById(R.id.product_rv);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -51,15 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-        get_product_btn.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "getting product", Toast.LENGTH_SHORT).show();
-                getProducts();
+              Intent intent = new Intent(MainActivity.this,AddProduct.class);
+              startActivity(intent);
             }
         });
 
@@ -85,11 +84,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response)
                     {
-                        Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
-                        Log.i("response", "onResponse: "+response.toString());
+                        // creating a new json object and
+                        // getting each object from our json array.
                         for (int i = 0; i < response.length(); i++) {
-                            // creating a new json object and
-                            // getting each object from our json array.
+
                             try {
                                 // we are getting each json object.
                                 JSONObject responseObj = response.getJSONObject(i);

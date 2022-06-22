@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Wambugu Grocery</string>
     <string name="get_product">get product</string>
+    <string name="submit">add</string>
+    <string name="product_name">product name</string>
+    <string name="name">Name</string>
+    <string name="product_description">product description</string>
+
+    <string name="pick_image">pick image</string>
+    <string name="price">price</string>
     <string-array name="products">
         <item>tomatoes</item>
         <item>spinach</item>
